@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script>
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           background-color:red;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+input{
+    width:100px;
+    margin-left:20px;
+    margin-right:30px;
+    margin-bottom:20px;
+}
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #prediction-result {
+            display: none;
+          }
+          
+          input[type="submit"] {
+            cursor: pointer;
+          }
+          
+          input[type="submit"]:hover {
+            background-color: #ccc;
+          }
+          h1 {
+            text-align: center;
+            color:yellow;
+        }
+
+        label {
+            font-weight: bolder;
+            color:white;
+            font-size:18px
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Breast Cancer Prediction</h1>
+    <form id="prediction-form">
+
+        <label for="radius_mean">Radius_mean:</label>
+        <input type="number" id="radius_mean" name="radius_mean" required step="0.00000001">
+
+        <label for="texture_mean">Texture_mean</label>
+        <input type="number" id="texture_mean" name="texture_mean" required step="0.00000001">
+        
+        <label for="perimeter_mean">perimeter_mean</label>
+        <input type="number" id="perimeter_mean" name="perimeter_mean" required step="0.00000001">
+        <br>
+
+        <label for="area_mean">Area_mean</label>
+        <input type="number" id="area_mean" name="area_mean" required step="0.00000001">
+
+        <label for="smoothness_mean">smoothness_mean</label>
+        <input type="number" id="smoothness_mean" name="smoothness_mean" required step="0.00000001">
+        
+        <label for="compactness_mean">compactness_mean</label>
+        <input type="number" id="compactness_mean" name="compactness_mean" required step="0.00000001">
+        <br>
+
+        <label for="concavity_mean">concavity_mean</label>
+        <input type="number" id="concavity_mean" name="concavity_mean"  step="0.00000001">
+        
+        <label for="concave_points_mean">concave_points_mean</label>
+        <input type="number" id="concave_points_mean" name="concave_points_mean" step="0.00000001">
+        
+        <label for="symmetry_mean">symmetry_mean</label>
+        <input type="number" id="symmetry_mean" name="symmetry_mean"required step="0.00000001">
+        <br>
+
+        <label for="fractal_dimension_mean">fractal_dimension_mean</label>
+        <input type="number" id="fractal_dimension_mean" name="fractal_dimension_mean" required step="0.00000001">
+
+        <label for="radius_se">radius_se</label>
+        <input type="number" id="radius_se" name="radius_se" required step="0.00000001">
+        
+        <label for="texture_se">texture_se</label>
+        <input type="number" id="texture_se" name="texture_se" required step="0.00000001">
+        <br>
+
+        <label for="perimeter_se">perimeter_se</label>
+        <input type="number" id="perimeter_se" name="perimeter_se" required step="0.00000001">
+        
+        <label for="area_se">area_se</label>
+        <input type="number" id="area_se" name="area_se" required step="0.00000001">
+        
+        
+        <label for="smoothness_se">smoothness_se</label>
+        <input type="number" id="smoothness_se" name="smoothness_se" required step="0.00000001">
+        <br>
+        
+        <label for="compactness_se">compactness_se</label>
+        <input type="number" id="compactness_se"name="compactness_se"  required step="0.00000001">
+   
+        <label for="concavity_se">concavity_se</label>
+        <input type="number" id="concavity_se" name="concavity_se"required step="0.00000001">
+        
+        <label for="concave_points_se">concave points_se</label>
+        <input type="number" id="concave_points_se" name="concave_points_se" required step="0.00000001">
+        <br>
+        <label for="symmetry_se">symmetry_se</label>
+        <input type="number" id="symmetry_se" name="symmetry_se"  required step="0.00000001">
+        
+        <label for="fractal_dimension_se">fractal_dimension_se</label>
+        <input type="number" id="fractal_dimension_se" name="fractal_dimension_se" required step="0.00000001">
+        
+        <label for="radius_worst">radius_worst</label>
+        <input type="number" id="radius_worst" name="radius_worst"  required step="0.00000001">
+        <br>
+        <label for="texture_worst">texture_worst</label>
+        <input type="number" id="texture_worst" name="texture_worst" required step="0.00000001">
+        
+        <label for="perimeter_worst">perimeter_worst</label>
+        <input type="number" id="perimeter_worst" name="perimeter_worst" required step="0.00000001">
+        
+        <label for="area_worst">area_worst</label>
+        <input type="number" id="area_worst" name="area_worst" required step="0.00000001">
+        <br>
+        <label for="smoothness_worst">smoothness_worst</label>
+        <input type="number" id="smoothness_worst" name="smoothness_worst" required step="0.00000001">
+    
+        <label for="compactness_worst">compactness_worst</label>
+        <input type="number" id="compactness_worst" name="compactness_worst" required step="0.00000001">
+        
+        <label for="concavity_worst">concavity_worst</label>
+        <input type="number" id="concavity_worst" name="concavity_worst" required step="0.00000001">
+        <br>
+        <label for="concave_points_worst">concave points_worst</label>
+        <input type="number" id="concave_points_worst" name="concave_points_worst" required step="0.00000001">
+      
+        <label for="symmetry_worst">symmetry_worst</label>
+        <input type="number" id="symmetry_worst" name="symmetry_worst" required step="0.00000001">
+        
+        <label for="fractal_dimension_worst">fractal_dimension_worst</label>
+        <input type="number" id="fractal_dimension_worst" name="fractal_dimension_worst"  required step="0.00000001">
+        <br>
+        <input type="submit" value="Predict" onclick="showPredictionResult()">
+<br><br>
+    </form>
+    <div id="prediction-result"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#prediction-form").submit(function (event) {
+            event.preventDefault();
+            var input_data = {
+                "radius_mean": parseFloat($("#radius_mean").val()),
+                "texture_mean": parseFloat($("#texture_mean").val()),
+                "perimeter_mean": parseFloat($("#perimeter_mean").val()),
+                "area_mean": parseFloat($("#area_mean").val()),
+                "smoothness_mean": parseFloat($("#smoothness_mean").val()),
+                "compactness_mean": parseFloat($("#compactness_mean").val()),
+                "concavity_mean": parseFloat($("#concavity_mean").val()),
+                "concave_points_mean": parseFloat($("#concave_points_mean").val()),
+                "symmetry_mean": parseFloat($("#symmetry_mean").val()),
+                "fractal_dimension_mean": parseFloat($("#fractal_dimension_mean").val()),
+                "radius_se": parseFloat($("#radius_se").val()),
+                "texture_se": parseFloat($("#texture_se").val()),
+                "perimeter_se": parseFloat($("#perimeter_se").val()),
+                "area_se": parseFloat($("#area_se").val()),
+                "smoothness_se": parseFloat($("#smoothness_se").val()),
+                "compactness_se": parseFloat($("#compactness_se").val()),
+                "concavity_se": parseFloat($("#concavity_se").val()),
+                "concave_points_se": parseFloat($("#concave_points_se").val()),
+                "symmetry_se": parseFloat($("#symmetry_se").val()),
+                "fractal_dimension_se": parseFloat($("#fractal_dimension_se").val()),
+                "radius_worst": parseFloat($("#radius_worst").val()),
+                "texture_worst": parseFloat($("#texture_worst").val()),
+                "perimeter_worst": parseFloat($("#perimeter_worst").val()),
+                "area_worst": parseFloat($("#area_worst").val()),
+                "smoothness_worst": parseFloat($("#smoothness_worst").val()),
+                "compactness_worst": parseFloat($("#compactness_worst").val()),
+                "concavity_worst": parseFloat($("#concavity_worst").val()),
+                "concave_points_worst": parseFloat($("#concave_points_worst").val()),
+                "symmetry_worst": parseFloat($("#symmetry_worst").val()),
+                "fractal_dimension_worst": parseFloat($("#fractal_dimension_worst").val())
+            };
+            
+            // Send a POST request to the /train endpoint with JSON data
+            $.ajax({
+                type: "POST",
+                url: "/train",
+                data: JSON.stringify(input_data),
+                contentType: "application/json", // Set the Content-Type header to JSON
+                dataType: "json", // Expect JSON in response
+                success: function (response) {
+                    // Display the prediction result
+                    $("#prediction-result").text(response.prediction);
+                    $("#prediction-result").show(); // Show the result
+                },
+                error: function (xhr, status, error) {
+                    // Display the error message
+                    $("#prediction-result").text("An error occurred while making the prediction. Please try again later.");
+                    $("#prediction-result").show(); // Show the error message
+                    console.error(xhr.responseText); // Log the error response to console
+                }
+            });
+        });
+    });
+
+    function showPredictionResult() {
+        $("#prediction-result").show();
+    }
+</script>
+
+
+</body>
+</html>

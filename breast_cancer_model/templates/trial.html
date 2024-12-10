@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        input[type="submit"] {
+            font-size:xx-large;
+            background-color: while;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #prediction-result {
+            display: none;
+            background-color: while;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        input[type="submit"] {
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #ccc;
+        }
+        h1 {
+            text-align: center;
+            color: #ea868f;
+            font-size:-webkit-xxx-large;
+        }
+        label {
+            font-weight: bolder;
+            color: black;
+            font-size: 18px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            width: 33.33%;
+            padding: 0 10px;
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://cdn.wallpapersafari.com/55/82/1Y83ob.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+            
+#prediction-result{
+    font-size: xx-large;
+}
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            margin-left: 0;
+            margin-right: 0;
+            margin-bottom: 10px;
+            opacity:0.9;
+            background-color:transparent;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <form id="prediction-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="radius_mean">Radius_mean:</label>
+                    <input type="number" id="radius_mean" name="radius_mean" required step="0.00000001">
+                    <label for="area_mean">Area_mean:</label>
+                    <input type="number" id="area_mean" name="area_mean" required step="0.00000001">
+                    <label for="concavity_mean">Concavity_mean:</label>
+                    <input type="number" id="concavity_mean" name="concavity_mean" step="0.00000001">
+                </div>
+                <div class="form-group">
+                    <label for="texture_mean">Texture_mean:</label>
+                    <input type="number" id="texture_mean" name="texture_mean" required step="0.00000001">
+                    <label for="smoothness_mean">Smoothness_mean:</label>
+                    <input type="number" id="smoothness_mean" name="smoothness_mean" required step="0.00000001">
+                    <label for="concave_points_mean">Concave_points_mean:</label>
+                    <input type="number" id="concave_points_mean" name="concave_points_mean" step="0.00000001">
+                </div>
+                <div class="form-group">
+                    <label for="perimeter_mean">Perimeter_mean:</label>
+                    <input type="number" id="perimeter_mean" name="perimeter_mean" required step="0.00000001">
+                    <label for="compactness_mean">Compactness_mean:</label>
+                    <input type="number" id="compactness_mean" name="compactness_mean" required step="0.00000001">
+                    <label for="symmetry_mean">Symmetry_mean:</label>
+                    <input type="number" id="symmetry_mean" name="symmetry_mean" required step="0.00000001">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fractal_dimension_mean">Fractal_dimension_mean:</label>
+                    <input type="number" id="fractal_dimension_mean" name="fractal_dimension_mean" required step="0.00000001">
+                    <label for="perimeter_se">Perimeter_se:</label>
+                    <input type="number" id="perimeter_se" name="perimeter_se" required step="0.00000001">
+                    <label for="compactness_se">Compactness_se:</label>
+                    <input type="number" id="compactness_se" name="compactness_se" required step="0.00000001">
+                </div>
+                <div class="form-group">
+                    <label for="radius_se">Radius_se:</label>
+                    <input type="number" id="radius_se" name="radius_se" required step="0.00000001">
+                    <label for="area_se">Area_se:</label>
+                    <input type="number" id="area_se" name="area_se" required step="0.00000001">
+                    <label for="concavity_se">Concavity_se:</label>
+                    <input type="number" id="concavity_se" name="concavity_se" required step="0.00000001">
+                </div>
+                <div class="form-group">
+                     
+                    <label for="texture_se">Texture_se:</label>
+                    <input type="number" id="texture_se" name="texture_se" required step="0.00000001">
+                    <label for="smoothness_se">Smoothness_se:</label>
+                    <input type="number" id="smoothness_se" name="smoothness_se" required step="0.00000001">
+                    <label for="concave_points_se">Concave_points_se:</label>
+                    <input type="number" id="concave_points_se" name="concave_points_se" required step="0.00000001">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="symmetry_se">Symmetry_se:</label>
+                    <input type="number" id="symmetry_se" name="symmetry_se" required step="0.00000001">
+                    <label for="texture_worst">Texture_worst:</label>
+                    <input type="number" id="texture_worst" name="texture_worst" required step="0.00000001">
+                    <label for="smoothness_worst">smoothness_worst</label>
+                    <input type="number" id="smoothness_worst" name="smoothness_worst" required step="0.00000001">
+                    <label for="concave_points_worst">concave points_worst</label>
+                    <input type="number" id="concave_points_worst" name="concave_points_worst" required step="0.00000001">
+                </div>
+                <div class="form-group">
+                    <label for="fractal_dimension_se">Fractal_dimension_se:</label>
+                    <input type="number" id="fractal_dimension_se" name="fractal_dimension_se" required step="0.00000001">  
+                    <label for="perimeter_worst">Perimeter_worst:</label>
+                    <input type="number" id="perimeter_worst" name="perimeter_worst" required step="0.00000001">
+                    <label for="compactness_worst">compactness_worst</label>
+                    <input type="number" id="compactness_worst" name="compactness_worst" required step="0.00000001">
+                    <label for="symmetry_worst">symmetry_worst</label>
+                    <input type="number" id="symmetry_worst" name="symmetry_worst" required step="0.00000001">
+                        
+                </div>
+                <div class="form-group">
+                           
+                    <label for="radius_worst">Radius_worst:</label>
+                    <input type="number" id="radius_worst" name="radius_worst" required step="0.00000001">
+                    <label for="area_worst">area_worst</label>
+                    <input type="number" id="area_worst" name="area_worst" required step="0.00000001">
+                    <label for="concavity_worst">concavity_worst</label>
+                    <input type="number" id="concavity_worst" name="concavity_worst" required step="0.00000001">
+                   <label for="fractal_dimension_worst">fractal_dimension_worst</label>
+        <input type="number" id="fractal_dimension_worst" name="fractal_dimension_worst"  required step="0.00000001">
+                
+                    </div>
+                    </div>
+
+<br>
+<input type="submit" value="Predict" onclick="showPredictionResult()"></div>
+    </form>
+    <center><div id="prediction-result"></center></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#prediction-form").submit(function (event) {
+            event.preventDefault();
+            var input_data = {
+                "radius_mean": parseFloat($("#radius_mean").val()),
+                "texture_mean": parseFloat($("#texture_mean").val()),
+                "perimeter_mean": parseFloat($("#perimeter_mean").val()),
+                "area_mean": parseFloat($("#area_mean").val()),
+                "smoothness_mean": parseFloat($("#smoothness_mean").val()),
+                "compactness_mean": parseFloat($("#compactness_mean").val()),
+                "concavity_mean": parseFloat($("#concavity_mean").val()),
+                "concave_points_mean": parseFloat($("#concave_points_mean").val()),
+                "symmetry_mean": parseFloat($("#symmetry_mean").val()),
+                "fractal_dimension_mean": parseFloat($("#fractal_dimension_mean").val()),
+                "radius_se": parseFloat($("#radius_se").val()),
+                "texture_se": parseFloat($("#texture_se").val()),
+                "perimeter_se": parseFloat($("#perimeter_se").val()),
+                "area_se": parseFloat($("#area_se").val()),
+                "smoothness_se": parseFloat($("#smoothness_se").val()),
+                "compactness_se": parseFloat($("#compactness_se").val()),
+                "concavity_se": parseFloat($("#concavity_se").val()),
+                "concave_points_se": parseFloat($("#concave_points_se").val()),
+                "symmetry_se": parseFloat($("#symmetry_se").val()),
+                "fractal_dimension_se": parseFloat($("#fractal_dimension_se").val()),
+                "radius_worst": parseFloat($("#radius_worst").val()),
+                "texture_worst": parseFloat($("#texture_worst").val()),
+                "perimeter_worst": parseFloat($("#perimeter_worst").val()),
+                "area_worst": parseFloat($("#area_worst").val()),
+                "smoothness_worst": parseFloat($("#smoothness_worst").val()),
+                "compactness_worst": parseFloat($("#compactness_worst").val()),
+                "concavity_worst": parseFloat($("#concavity_worst").val()),
+                "concave_points_worst": parseFloat($("#concave_points_worst").val()),
+                "symmetry_worst": parseFloat($("#symmetry_worst").val()),
+                "fractal_dimension_worst": parseFloat($("#fractal_dimension_worst").val())
+            };
+            
+            // Send a POST request to the /train endpoint with JSON data
+            $.ajax({
+                type: "POST",
+                url: "/train",
+                data: JSON.stringify(input_data),
+                contentType: "application/json", // Set the Content-Type header to JSON
+                dataType: "json", // Expect JSON in response
+                success: function (response) {
+                    var predictionResult = response.prediction;
+                    var color;
+                    if (predictionResult.toLowerCase() === "malignant") {
+                        color = "red";
+                    } else {
+                        color = "green";
+                    }
+                    $("#prediction-result").text(predictionResult).css("color", color);
+                    $("#prediction-result").show(); // Show the result
+                },
+                error: function (xhr, status, error) {
+                    // Display the error message
+                    $("#prediction-result").text("An error occurred while making the prediction. Please try again later.");
+                    $("#prediction-result").show(); // Show the error message
+                    console.error(xhr.responseText); // Log the error response to console
+                }
+            });
+        });
+    });
+
+    function showPredictionResult() {
+        $("#prediction-result").show();
+    }
+</script>
+
+
+</body>
+</html>
